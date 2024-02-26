@@ -49,7 +49,7 @@ struct Word {
 
 async fn interactive(pool: &SqlitePool, flag: &Flags) -> anyhow::Result<()> {
     let mut processing = true;
-    println!("Running in interactive mode.Please input words to search.")
+    println!("Running in interactive mode.Please input words to search.");
     while processing {
         let mut input = String::new();
         match std::io::stdin().read_line(&mut input) {
@@ -83,6 +83,7 @@ async fn word_query(pool: &SqlitePool, word: String, flag: &Flags) -> anyhow::Re
         }
         println!("Word: {}", row.word);
         println!("Translation: \n {}", row.translation);
+        println!("\n");
 
         if flag.save {
             let _ = write_history(&row);
@@ -104,8 +105,13 @@ fn write_history(words: &Word) -> anyhow::Result<()> {
         .open(p)
         .expect("cannot open log file.");
 
-    file.write_all(words.translation.replace("\n", "\\n").as_bytes())
-        .expect("write failed");
+    let line = format!(
+        "{}---{}",
+        words.word,
+        words.translation.replace("\n", "\\n")
+    );
+
+    file.write_all(line.as_bytes()).expect("write failed");
     file.write_all("\n".as_bytes());
     Ok(())
 }
