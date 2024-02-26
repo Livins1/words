@@ -1,9 +1,9 @@
-### Words
+## Words
 
 
 Command line tool for querying the ECDICT Chinese/English dictionary.
 
-##### Usage
+#### Usage
 I am using this tool to log the search history of the words.
 
 ```
@@ -22,7 +22,7 @@ OPTIONS:
     -s, --save           Save the words history to a log file ( words.log ).
     -V, --version        Display version information.
 ```
-##### Installation
+#### Installation
 ```
 Cargo build --release 
 # eg. ~/.local/bin or /any/path/in/env
@@ -32,7 +32,7 @@ cp ./target/release/words ~/.local/bin/
 mv stardict.db /usr/share/wordlists/stardict.db
 ```
 
-##### Thanks
+#### Thanks
 https://github.com/skywind3000/ECDICT
 
 
