@@ -4,7 +4,7 @@
 Command line tool for querying the ECDICT Chinese/English dictionary.
 
 ##### Usage
-I am using this tool to log search history of the words.
+I am using this tool to log the search history of the words.
 
 ```
 words 0.1.0
